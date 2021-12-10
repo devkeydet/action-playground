@@ -1,0 +1,21 @@
+name: test-variable-groups
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        required: true
+        default: dev
+        description: 'name of environment'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: load-group
+        uses: the-coding-turtle/ga-yaml-parser@v0.1
+        with:
+          file: ./.github/variables/${{ github.event.inputs.environment }}-variable-group.yml
+          export_to_envs: true
+          return_to_outputs: false
+      - run: |
+          echo "var_one: $var_one"
