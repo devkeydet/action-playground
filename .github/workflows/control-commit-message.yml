@@ -1,4 +1,4 @@
-name: workflow-output
+name: control-commit-message
 on:
   workflow_dispatch:
     inputs:
