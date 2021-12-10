@@ -13,5 +13,8 @@ jobs:
         shell: pwsh
         run: |
           git config --global user.name ${{ github.actor }}         
-          git commit --amend -m "old message"         
-          git push --force
+          $message = 'foo'
+          Set-Content -Path  message.txt -Value $message
+          git add --all
+          git commit -am $message
+          git push
