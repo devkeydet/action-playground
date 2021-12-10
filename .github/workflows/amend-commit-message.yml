@@ -1,9 +1,9 @@
 name: workflow-output
 on:
   workflow_dispatch:
-env:
-  build: 98
-  revision: 98
+    inputs:
+      message: 
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,9 +11,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run a multi-line script
         shell: pwsh
+        env:
+          message: ${{ github.event.inputs.message }}
         run: |
           git config --global user.name ${{ github.actor }}         
-          $message = 'foo'
+          $message = $env:message
           Set-Content -Path  message.txt -Value $message
           git add --all
           git commit -am $message
