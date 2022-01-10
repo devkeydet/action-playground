@@ -11,4 +11,4 @@ jobs:
       
       - name: Run a multi-line script
         run: |
-          gh run list --workflow control-commit-message --json databaseId,headBranch,status
+          gh run list --workflow control-commit-message
