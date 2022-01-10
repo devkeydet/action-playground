@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
       
@@ -14,7 +14,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # runner doesn't have 2.4.0 yet, so forcing
-          sudo apt update
-          sudo apt install gh
+          choco upgrade gh
           gh --version 
           gh run list --workflow control-commit-message --json databaseId,headBranch,status
