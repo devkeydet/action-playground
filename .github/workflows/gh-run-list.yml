@@ -13,5 +13,8 @@ jobs:
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # runner doesn't have 2.4.0 yet, so forcing
+          sudo apt update
+          sudo apt install gh
           gh --version 
           gh run list --workflow control-commit-message --json databaseId,headBranch,status
