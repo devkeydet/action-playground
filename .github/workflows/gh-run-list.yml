@@ -13,4 +13,5 @@ jobs:
         env: 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh run list --workflow control-commit-message
+          gh --version 
+          gh run list --workflow control-commit-message --json databaseId,headBranch,status
