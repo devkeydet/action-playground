@@ -9,6 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Run a multi-line script
+      - name: gh run list
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh run list --workflow control-commit-message
